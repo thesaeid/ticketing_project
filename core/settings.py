@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-
+from core.local_settings import *
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,12 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-t3kh7g3e(7t4x1)uqg07!ckf$@m99t3dqo65l-@bxs0ev)*^7^"
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,8 +32,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "authenticating",
-    "ticketing",
+    "authenticating.apps.AuthenticatingConfig",
+    "ticketing.apps.TicketingConfig",
 ]
 
 MIDDLEWARE = [
@@ -76,9 +71,13 @@ WSGI_APPLICATION = "core.wsgi.application"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': db_name,
+        'HOST' : db_host,
+        'PASSWORD': db_pass,
+        'USER': db_user,
+        'PORT': db_port,
     }
 }
 
@@ -112,6 +111,9 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
+
+AUTH_USER_MODEL = 'authenticating.CustomUser'
+
 
 
 # Static files (CSS, JavaScript, Images)
