@@ -17,13 +17,6 @@
     box-shadow: 0 5px 20px rgb(0 0 0 / 10%);
 }
 
-.Your-info{
-    margin-bottom: 80px;
-}
-
-.name-info{
-    margin-top: 20px;
-}
 .icon {
     vertical-align: middle;
 }
@@ -67,34 +60,6 @@
 }
 
 
-.stat-widget-one .stat-icon {
-    vertical-align: top;
-}
-
-.stat-widget-one .stat-icon i {
-    font-size: 30px;
-    border-width: 3px;
-    border-style: solid;
-    border-radius: 100px;
-    padding: 15px;
-    font-weight: 900;
-    display: inline-block;
-}
-
-.stat-widget-one .stat-content {
-    margin-right: 30px;
-    margin-top: 7px;
-}
-
-.stat-widget-one .stat-text {
-    font-size: 14px;
-    color: #868e96;
-}
-
-.stat-widget-one .stat-digit {
-    font-size: 24px;
-    color: #373757;
-}
 
 .main-page-top {
 
