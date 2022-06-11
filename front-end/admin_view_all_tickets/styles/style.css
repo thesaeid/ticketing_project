@@ -24,9 +24,7 @@
 .dib {
     display: inline-block;
 }
-.db {
-    display: block !important;
-}
+
 .color-success {
     border-color: #28a745;
 }
@@ -58,8 +56,6 @@
 .border-danger {
     border-color: #dc3545;
 }
-
-
 
 .main-page-top {
 
@@ -126,16 +122,6 @@
     text-decoration: underline;
 }
 
-@media only screen and (max-width: 868px) {
-    .welcome-text {
-        text-align: center;
-        padding-bottom: 20px;
-    }
-
-    .current-location-text {
-        text-align: left;
-    }
-}
 
 
 .main-page-info p {
