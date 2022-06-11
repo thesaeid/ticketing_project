@@ -10,7 +10,8 @@
     <link href="./includes/style.css" rel="stylesheet">
     <link href="./includes/themify/themify-icons.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="assets/css/lib/themify-icons.css" rel="stylesheet">
 
 </head>
@@ -19,8 +20,6 @@
     <!-- MENU -->
     <div class="container-fluid">
         <div class="row container-fluid main-page-top">
-
-
             <span class="current-location-text">
                 <i class="ti-direction-alt icon"></i> Admin View Ticket
             </span>
@@ -34,11 +33,29 @@
                 <div class="card">
                     <form action="#" method="POST" class="form">
                         <label for="" class="db">عنوان تیکت</label>
-                        <input type="text" class="form-control">
+                        <input readonly type="text" class="form-control">
                         <label for="" class="db">متن تیکت</label>
-                        <textarea name="" id="" class="form-control"></textarea>
+                        <textarea readonly name="" id="" class="form-control"></textarea>
                         <label for="" class="db">پاسخگویی</label>
                         <textarea name="" id="" class="form-control"></textarea>
+                        
+                        
+                        
+                        <label for="" class="db">وضعیت تیکت</label>
+                        <div class="text-center container">
+                            <!-- BACKEND GUYS, IT'S RADIO BUTTON -->
+                                <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off"
+                                    checked />
+                                <label class="btn btn-primary p-1 mx-1" for="option1">بررسی شده</label>
+
+                                <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off" />
+                                <label class="btn btn-warning p-1 mx-1" for="option2">در حال بررسی</label>
+
+                                <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" />
+                                <label class="btn btn-danger p-1 mx-1" for="option3">بررسی نشده</label>
+                            
+                        </div>
+
                         <div class="text-center py-3">
                             <button type="button" class="btn btn-primary">ارسال</button>
                             <button type="submit" class="btn btn-danger">لغو</button>
