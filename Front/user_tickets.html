@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namr Project</title>
+    <link href="./includes/bootstrap5.css" rel="stylesheet">
+    <link href="./includes/style.css" rel="stylesheet">
+    <link href="./includes/themify/themify-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="assets/css/lib/themify-icons.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- MENU -->
+    <div class="container-fluid">
+        <div class="row container-fluid main-page-top">
+
+
+            <span class="current-location-text">
+                <i class="ti-direction-alt icon"></i> User Tickets
+            </span>
+
+        </div>
+        
+
+        <!-- second part -->
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="card main-page-table">
+                    <span>جدول تیکت ها</span>
+                    <div class="table-responsive">
+
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col" class="ticket-name">نام تیکت</th>
+                                    <th scope="col" class="ticket-text">متن تیکت</th>
+                                    <th scope="col">وضعیت</th>
+                                    <th scope="col">تاریخ ثبت</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- FIRST BODY START -->
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td><a href="#">عنوان 1</a></td>
+                                    <td>بیست کارکتر از  تیکت</td>
+                                    <td><span class="badge badge-success">بررسی شده</span></td>
+                                    <td>YYYY/MM/DD</td>
+                                </tr>
+                                <!-- FIRST BODY END -->
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td><a href="#">عنوان 2</a></td>
+                                    <td>بیست کارکتر  از تیکت</td>
+                                    <td><span class="badge badge-warning">در حال بررسی</span></td>
+                                    <td>YYYY/MM/DD</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td><a href="#">عنوان 3</a></td>
+                                    <td>بیست کارکتر  از تیکت</td>
+                                    <td><span class="badge badge-danger">بررسی نشده</span></td>
+                                    <td>YYYY/MM/DD</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-3">
+                <div class="card main-page-info">
+                    <p>اطلاعات شما</p>
+                    <hr>
+                    <span>نام</span>
+                    <span>نام خانوادگی</span>
+                    <span>آدرس</span>
+                    <span>{{ اطلاعات دیگر در صورت نیاز }}</span>
+                    <a href="#" class="btn btn-block btn-danger main-page-update-btn">بروزرسانی</a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <!-- FOOTER -->
+
+
+
+
+</body>
+
+</html>
