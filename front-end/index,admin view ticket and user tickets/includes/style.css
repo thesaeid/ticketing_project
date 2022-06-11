@@ -6,6 +6,7 @@
 * {
     direction: rtl;
     font-family: Yekan;
+
 }
 
 .card {
@@ -200,4 +201,7 @@
 }
 .text-center {
     text-align: center;
+}
+.pf {
+    position: fixed;
 }
