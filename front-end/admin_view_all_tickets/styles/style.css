@@ -173,7 +173,16 @@
 }
 
 
+.main-page-info p {
+    text-align: center;
+    padding: 1.1em;
+    margin-bottom: -2px;
+}
 
+.main-page-info span {
+    margin : 0.1em;
+    padding: 3px 2px;
+} 
 
 .ticket-name {
     width: 25%;
