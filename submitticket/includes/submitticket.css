@@ -1,0 +1,207 @@
+@font-face {
+    font-family:'B Yekan';
+    src: url(./fonts/B Yekan.woff) format('woff');
+}
+
+* {
+    direction: rtl;
+    font-family:'B Yekan';
+}
+
+.card {
+    background-color: #ffffff;
+    margin: 7.5px 0px;
+    padding: 20px;
+    border: 1px solid #e7e7e7;
+    border-radius: 3px;
+    box-shadow: 0 5px 20px rgb(0 0 0 / 10%);
+}
+
+.icon {
+    vertical-align: middle;
+}
+
+.dib {
+    display: inline-block;
+}
+.db {
+    display: block !important;
+}
+.color-success {
+    border-color: #28a745;
+}
+
+.border-success {
+    color: #28a745;
+}
+
+.color-primary {
+    color: #5873fe;
+}
+
+.border-primary {
+    border-color: #5873fe;
+}
+
+.color-pink {
+    color: #e6a1f2;
+}
+
+.border-pink {
+    border-color: #e6a1f2;
+}
+
+.color-danger {
+    color: #ca5a65;
+}
+
+.border-danger {
+    border-color: #dc3545;
+}
+
+
+.stat-widget-one .stat-icon {
+    vertical-align: top;
+}
+
+.stat-widget-one .stat-icon i {
+    font-size: 30px;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 100px;
+    padding: 15px;
+    font-weight: 900;
+    display: inline-block;
+}
+
+.stat-widget-one .stat-content {
+    margin-right: 30px;
+    margin-top: 7px;
+}
+
+.stat-widget-one .stat-text {
+    font-size: 14px;
+    color: #868e96;
+}
+
+.stat-widget-one .stat-digit {
+    font-size: 24px;
+    color: #373757;
+}
+
+.main-page-top {
+
+    margin: 20px 0px;
+}
+
+.current-location-text {
+    text-align: left;
+}
+
+.user-name {
+    font-weight: 500;
+}
+
+
+.main-page-table>span {
+    text-align: right;
+    padding-bottom: 10px;
+}
+
+.table td {
+    border-top: 1px solid #1d76cf !important;
+}
+
+.table-ticket-name-header {
+    width: 40%;
+}
+
+.badge {
+    text-transform: uppercase;
+    color: white;
+    font-size: 14px;
+    padding: 7px 10px;
+    border-radius: 4px;
+    font-weight: 400;
+    transition: 0.2s ease-in-out;
+}
+.badge-hover:hover {
+    background-color: white;
+    color: black;
+}
+.badge-success {
+    /* background-color: #5873fe;  BE NAZAARAM IN RANG BARAYE BADGE-SUCCESS BEHTARE */ 
+    background-color: #0066FF;
+    
+}
+
+.badge-warning {
+    background-color: #e7b63a;
+}
+
+.badge-danger {
+    background-color: #dc3545;
+}
+
+.main-page-info p {
+    text-align: center;
+    margin-bottom: -2px;
+}
+
+.main-page-info span {
+    padding: 3px 2px;
+}
+
+.main-page-update-btn {
+    margin: 10px 0px;
+}
+
+.table a {
+    text-decoration: none;
+    color: black;
+}
+
+.table a:hover {
+    color: rgb(120, 120, 120);
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 868px) {
+    .welcome-text {
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    .current-location-text {
+        text-align: left;
+    }
+}
+
+
+
+
+.ticket-name {
+    width: 25%;
+}
+.form label {
+    padding: 4px 0px;
+}
+.form input {
+    border-radius: 4px;
+    margin: 5px 0px;
+    width: 100%;
+    padding: 7px;
+}
+.form textarea {
+    /* height: 120px; */
+    width: 100%;
+    height: 100px;
+    padding: 7px;
+}
+.text-center {
+    text-align: center;
+}
+p
+{
+    text-align: right;
+}
