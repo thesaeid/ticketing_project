@@ -1,0 +1,146 @@
+
+{% extends "parent/base.html" %}
+{% load static %}
+{% block title %} صفحه اصلی {% endblock %}
+{% block head %}
+     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row container-fluid main-page-top">
+            <div class="col-lg-4 welcome-text">
+                <span>
+                    خوش آمدید | <span class="user-name">  نام کاربر </span>
+                </span>
+            </div>
+            <div class="col-lg-8 current-location-text">
+                <span>
+                    <i class="ti-direction-alt icon"></i> Dashboard / Home
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <!-- FIRST WIDGET START -->
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="stat-widget-one">
+                        <div class="stat-icon dib"><i class="ti-receipt color-success border-success"></i>
+                        </div>
+                        <div class="stat-content dib">
+                            <div class="stat-text">تمام تیکت ها</div>
+                            <div class="stat-digit">تعداد تمامی تیکت ها</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FIRST WIDGET END -->
+            <div class="col-lg-3">
+                <div class="card">
+
+                    <div class="stat-widget-one">
+                        <div class="stat-icon dib"><i class="ti-comments-smiley color-primary border-primary"></i>
+                        </div>
+                        <div class="stat-content dib">
+                            <div class="stat-text">تیکت های بررسی شده</div>
+                            <div class="stat-digit">تعداد ت. بررسی شده</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+
+                    <div class="stat-widget-one">
+                        <div class="stat-icon dib"><i class="ti-headphone-alt color-pink border-pink"></i>
+                        </div>
+                        <div class="stat-content dib">
+                            <div class="stat-text">تیکت های در حال بررسی</div>
+                            <div class="stat-digit">تعداد ت. در حال بررسی</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+
+                    <div class="stat-widget-one">
+                        <div class="stat-icon dib"><i class="ti-face-sad color-danger border-danger"></i>
+                        </div>
+                        <div class="stat-content dib">
+                            <div class="stat-text">تیکت های بررسی نشده</div>
+                            <div class="stat-digit">252</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- second part -->
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="card main-page-table">
+                    <span>جدول تیکت ها</span>
+                    <div class="table-responsive">
+
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col" class="table-ticket-name-header ">نام تیکت</th>
+                                    <th scope="col">وضعیت</th>
+                                    <th scope="col">تاریخ آخرین تغییر</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- FIRST BODY START -->
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td><a href="#">عنوان 1</a></td>
+                                    <td><span class="badge badge-success">بررسی شده</span></td>
+                                    <td>YYYY/MM/DD</td>
+                                </tr>
+                                <!-- FIRST BODY END -->
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td><a href="#">عنوان 2</a></td>
+                                    <td><span class="badge badge-warning">در حال بررسی</span></td>
+                                    <td>YYYY/MM/DD</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td><a href="#">عنوان 3</a></td>
+                                    <td><span class="badge badge-danger">بررسی نشده</span></td>
+                                    <td>YYYY/MM/DD</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-3">
+                <div class="card main-page-info">
+                    <p>اطلاعات شما</p>
+                    <hr>
+                    <span>نام</span>
+                    <span>نام خانوادگی</span>
+                    <span>آدرس</span>
+                    <span> اطلاعات دیگر در صورت نیاز </span>
+                    <a href="#" class="btn btn-block btn-danger main-page-update-btn">بروزرسانی</a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

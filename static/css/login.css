@@ -1,0 +1,43 @@
+@font-face {
+  font-family: BNazanin;
+  src: url("../fonts/BNazanin.ttf") format('truetype');
+}
+
+body {
+  font-family: BNazanin;
+}
+.vh-100 {
+  background-color: #5590fd;
+}
+
+.card {
+  border-radius: 2rem;
+}
+.text-login {
+  font-size: 2.25rem;
+  font-weight: bold;
+}
+
+.form-control {
+  font-size: 1.15rem;
+}
+
+
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  margin-top: 1.5rem;
+}
+.form-check-label {
+  margin-right: 30px;
+}
+
+.btn {
+  border-radius: 15px;
+  width: 8rem;
+  height: 3rem;
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  padding-top: 3px;
+}
