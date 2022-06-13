@@ -1,0 +1,20 @@
+{% load static%}
+<html lang="fa-IR" dir="rtl" >
+<head>
+    <meta charset="UTF-8">
+    <title>blog : {% block title %} {% endblock %}</title>
+     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+     <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+
+
+    {% block head %} {% endblock %}
+</head>
+<body>
+{% include "partial/menu.html" %}
+{% block content %}
+{% endblock %}
+
+{% include "partial/footer.html"%}
+
+</body>

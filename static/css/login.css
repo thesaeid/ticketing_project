@@ -1,6 +1,6 @@
 @font-face {
   font-family: BNazanin;
-  src: url("fonts/BNazanin.ttf") format('truetype');
+  src: url("../fonts/BNazanin.ttf") format('truetype');
 }
 
 body {
