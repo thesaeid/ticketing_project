@@ -1,10 +1,10 @@
 @font-face {
-  font-family: BNazanin;
-  src: url("fonts/BNazanin.ttf") format('truetype');
+  font-family: "B Yekan";
+  src: url("fonts/BYekan.ttf") format('truetype');
 }
 
 body {
-  font-family: BNazanin;
+  font-family: 'B Yekan';
 }
 .vh-100 {
   background-color: #5590fd;
@@ -14,12 +14,12 @@ body {
   border-radius: 2rem;
 }
 .text-login {
-  font-size: 2.25rem;
+  font-size: 2.20rem;
   font-weight: bold;
 }
 
 .form-control {
-  font-size: 1.15rem;
+  font-size: 1.10rem;
 }
 
 
