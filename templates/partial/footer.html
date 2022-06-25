@@ -1,16 +1,12 @@
-<footer
-          class="text-center text-lg-start text-white"
-          >
+{% comment %} <footer class="text-center text-lg-start text-white">
     <div class="container p-4 pb-0">
       <!-- Section: Links -->
-      <section class="">
+      <section>
         <!--Grid row-->
         <div class="row">
           <!-- Grid column -->
           <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-            <h5 class="text-uppercase mb-3 font-weight-bold">
-          درباره
-            </h5>
+            <h5 class="text-uppercase mb-3 font-weight-bold">درباره</h5>
             <p>
                این وبسایت برای پشتیبانی از محصولات
                نرم افزاری است
@@ -50,7 +46,7 @@
           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
             <h5 class="text-uppercase mb-4 font-weight-bold">ارتباط با ما</h5>
             <p><i class="fas fa-home mr-3"></i> ایران ،تهران ،لویزان</p>
-            <p><i class="fas fa-envelope mr-3"></i> mobinghasemikurd@gmail.com</p>
+            <p><i class="fas fa-envelope mr-3"></i> mobinghasemikurd@gmail.com </p>
             <p><i class="fas fa-phone mr-3"></i> 2744 256 918 98+</p>
             <p><i class="fas fa-print mr-3"></i> 4588 156 918 98+</p>
           </div>
@@ -69,52 +65,33 @@
           <div class="col-md-7 col-lg-8 text-center text-md-start">
             <!-- Copyright -->
             <div class="py-xxl-5">
-           تمامی حقوق این وبسایت مربوط به شرکت پشتیبانی است&nbsp;&copy;
+           تمامی حقوق این وبسایت مربوط به شرکت پشتیبانی است
             </div>
             <!-- Copyright -->
           </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
-            <!-- Facebook -->
-            <a
-               class="btn btn-outline-light btn-floating m-1"
-               class="text-white"
-               role="button"
-               ><i class="fab fa-facebook-f"></i
-              ></a>
-
-            <!-- Twitter -->
-            <a
-               class="btn btn-outline-light btn-floating m-1"
-               class="text-white"
-               role="button"
-               ><i class="fab fa-twitter"></i
-              ></a>
-
-            <!-- Google -->
-            <a
-               class="btn btn-outline-light btn-floating m-1"
-               class="text-white"
-               role="button"
-               ><i class="fab fa-google"></i
-              ></a>
-
-            <!-- Instagram -->
-            <a
-               class="btn btn-outline-light btn-floating m-1"
-               class="text-white"
-               role="button"
-               ><i class="fab fa-instagram"></i
-              ></a>
-          </div>
-          <!-- Grid column -->
         </div>
       </section>
       <!-- Section: Copyright -->
     </div>
     <!-- Grid container -->
-    <script src="{% static 'js/bootstrap.js' %}"></script>
   </footer>
+ {% endcomment %}
 
+ <div class="footer-basic">
+  <footer>
+      {% comment %} <div class="social">
+        <a href="#"><i class="icon ion-social-instagram"></i></a>
+        <a href="#"><i class="icon ion-social-snapchat"></i></a>
+        <a href="#"><i class="icon ion-social-twitter"></i></a>
+        <a href="#"><i class="icon ion-social-facebook"></i></a>
+      </div> {% endcomment %}
+      <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">خانه</a></li>
+          <li class="list-inline-item"><a href="#">خدمات</a></li>
+          <li class="list-inline-item"><a href="#">درباره</a></li>
+          <li class="list-inline-item"><a href="#">شرایط</a></li>
+          <li class="list-inline-item"><a href="#">امنیت</a></li>
+      </ul>
+      <p class="copyright">تمامی حقوق این وبسایت مربوط به شرکت پشتیبانی است</p>
+  </footer>
+</div>

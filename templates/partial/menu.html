@@ -4,14 +4,14 @@
   <a href="#">مشاهده وضعیت تیکت ها</a>
   <a href="#">ارتباط با ما</a>
   <a href="#">خروج </a>
-        <a href="#">ورود</a>
-
-  <div class="search-container">
-    <form action="/action_page.php">
-          {% csrf_token %}
-
+  <a href="#">ورود</a>
+<div class="search-container">
+    <form action="">
+      {% csrf_token %}
       <input type="text" placeholder="جستجو..." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
+      <button type="submit">
+        <i class="fa fa-search"></i>
+      </button>
     </form>
   </div>
 </div>

@@ -4,22 +4,17 @@ from .models import CustomUser
 
 
 class CustomUserCreationForm(UserCreationForm):
-
     class Meta(UserCreationForm):
         model = CustomUser
-        fields = ('email',)
+        fields = ("email",)
+
 
 class CustomUserChangeForm(UserChangeForm):
-
     class Meta:
         model = CustomUser
-        fields = ('email',)
+        fields = ("email",)
 
 
-class Login(forms.ModelForm):
-    class Meta:
-        model=CustomUser
-        fields=('username', 'email')
-
-
-
+class Login(forms.Form):
+    email = forms.EmailField()
+    password = forms.CharField(widget=forms.PasswordInput)
