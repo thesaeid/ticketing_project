@@ -6,5 +6,5 @@ urlpatterns = [
     path("submit_ticket/", submit_ticket),
     path("user_tickets/", user_tickets),
     path("admin_view_ticket/", admin_view_ticket),
-    path("admin_view_all_tickets/", admin_view_all_tickets),
+    path("admin_view_all_tickets/<int:pk>", admin_view_all_tickets),
 ]
