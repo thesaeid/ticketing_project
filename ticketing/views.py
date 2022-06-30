@@ -1,8 +1,12 @@
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render,get_object_or_404,redirect
 from django.contrib.auth.decorators import login_required
-from .forms import UserSubmitTicketForm
+from .forms import *
 from .models import Ticketing
+from django.core.mail import send_mail
+from django.contrib import messages
+
+
 
 # Create your views here.
 def index(request):
@@ -37,8 +41,22 @@ def user_tickets(request):
     return render(request, "ticketing/user_tickets/user_tickets.html")
 
 
-def admin_view_ticket(request):
-    return render(request, "ticketing/admin_view_ticket/admin_view_ticket.html")
+def admin_view_ticket(request,ticket_id):
+    ticket = get_object_or_404(Ticketing, id=ticket_id)
+    if request.method == 'POST':
+        form = AdminViewTicketForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            message = cd['message']
+            subject = 'your ticket response !'
+            messages.add_message(
+                request, messages.ERROR, "Email sent correctly"
+            )
+            send_mail(subject, message, 'erfankiani10@gmail.com', [ticket.user.email], fail_silently=False)
+    else:
+        form = AdminViewTicketForm()
+    return render(request, 'ticketing/admin_view_ticket/admin_view_ticket.html', {'form': form, 'ticket': ticket})
+
 
 
 
