@@ -29,17 +29,17 @@
             <div class="col-lg-9">
                 <div class="card">
                     <form action="#" method="POST" class="form">
-                          {% csrf_token %}
-                        <label for="title-ticket" class="db">عنوان تیکت</label>
-                        <input type="text" name="title-ticket" class="form-control">
-                        <label for="phone" class="db"> تلفن همراه</label>
-                        <input type="tel" name="phone" class="form-control">
-                        <label for="text-ticket" class="db">متن تیکت</label>
-                        <textarea name="text-ticket"  class="form-control"></textarea>
-                        <div class="text-center py-3">
-                            <button type="button" class="btn btn-primary">ثبت</button>
-                            <button type="submit" class="btn btn-danger">لغو</button>
-                        </div>
+                          {% csrf_token %}  
+                          <label for="title-ticket" class="db">عنوان تیکت</label>
+                          <input type="text" name="title" class="form-control">
+                          <label for="phone" class="db"> تلفن همراه</label>
+                          <input type="tel" name="phonnum" class="form-control">
+                          <label for="text-ticket" class="db">متن تیکت</label>
+                          <textarea name="description" class="form-control"></textarea>
+                          <div class="text-center py-3">
+                              <button type="submit" class="btn btn-primary">ثبت</inp>
+                              <button type="cancel" class="btn btn-danger">لغو</button>
+                          </div>
                     </form>
                 </div>
 
@@ -48,10 +48,8 @@
                 <div class="card main-page-info">
                     <p>اطلاعات کاربر</p>
                     <hr>
-                    <p>نام</p>
-                    <p>نام خانوادگی</p>
-                    <p>نام کاربری</p>
-                    <p>ایمیل</p>
+                    <p>ایمیل:</p>
+                    <p>{{email}}</p>
                     <a href="#" class="btn btn-block btn-danger main-page-update-btn">بروزرسانی</a>
 
                 </div>

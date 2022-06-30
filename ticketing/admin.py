@@ -1,7 +1,7 @@
 from django.contrib import admin
-from ticketing.models import Ticheting , Category
-class TichetingAdmin(admin.ModelAdmin):
+from ticketing.models import Ticketing , Category
+class TicketingAdmin(admin.ModelAdmin):
     list_display = ['user' , 'title' , 'type' , 'description']
 
 
-admin.site.register(Ticheting , TichetingAdmin)
+admin.site.register(Ticketing , TicketingAdmin)
