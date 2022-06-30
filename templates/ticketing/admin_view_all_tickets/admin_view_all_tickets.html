@@ -43,45 +43,24 @@
                             <tbody>
 
                                 <!-- Ticket Info for admin STARTs -->
+                                {% for ticket in tickets %}
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row">{{ ticket.id }}</th>
 
                                     <!-- By click on title, ticket details page apear for admin  -->
-                                    <td><a href="#">عنوان 1</a></td>
-                                    <td>نام کاربری فرد</td>
-                                    <td><span class="badge badge-success">بررسی شده</span></td>
-                                    <td>YYYY/MM/DD</td>
+                                    <td><a href="#">{{ ticket.title }}</a></td>
+                                    <td>{{ ticket.username }}</td>
+                                    {% if ticket.ATTRIBUTE_TYPE_FIELDS == 1 %}
+                                        <td><span class="badge badge-success">بررسی شده</span></td>
+                                    {% elif ticket.ATTRIBUTE_TYPE_FIELDS == 2 %}
+                                        <td><span class="badge badge-warning">در حال بررسی</span></td>
+                                    {% elif ticket.ATTRIBUTE_TYPE_FIELDS == 3 %}
+                                        <td><span class="badge badge-danger">بررسی نشده</span></td>
+                                    {% endif %}
+                                    <td>{{ ticket.created_time }}</td>
                                 </tr>
-                                <!-- Ticket Info for admin ENDs -->
+                                {% endfor %}
 
-
-                                <tr>
-                                    <th scope="row">2</th>
-
-                                    <!-- By click on title, ticket details page apear for admin  -->
-                                    <td><a href="#">عنوان 2</a></td>
-                                    <td>نام کاربری فرد</td>
-                                    <td><span class="badge badge-warning">در حال بررسی</span></td>
-                                    <td>YYYY/MM/DD</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-
-                                     <!-- By click on title, ticket details page apear for admin  -->
-                                    <td><a href="#">عنوان 3</a></td>
-                                    <td>نام کاربری فرد</td>
-                                    <td><span class="badge badge-danger">بررسی نشده</span></td>
-                                    <td>YYYY/MM/DD</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-
-                                    <!-- By click on title, ticket details page apear for admin  -->
-                                    <td><a href="#">عنوان 4</a></td>
-                                    <td>نام کاربری فرد</td>
-                                    <td><span class="badge badge-warning">در حال بررسی</span></td>
-                                    <td>YYYY/MM/DD</td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -95,8 +74,8 @@
                 <div class="card main-page-info">
                     <p>اطلاعات شما</p>
                     <hr>
-                    <span>نام</span>
-                    <span>نام خانوادگی</span>
+                    <span>{{ user.username }}</span>
+                    <span>{{ user.email }}</span>
                 </div>
             </div>
              <!-- Admin Acount Info ENDs  -->
