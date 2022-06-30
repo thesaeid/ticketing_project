@@ -10,7 +10,7 @@ class Category(models.Model):
         return str(self.name)
 
 
-class Ticheting(models.Model):
+class Ticketing(models.Model):
     baresi = 1
     darhal_baresi = 2
     baresi_nashode = 3
@@ -34,7 +34,7 @@ class Ticheting(models.Model):
         return str(self.title)
 
 class ResponseTicket(models.Model):
-    tickets= models.ForeignKey(Ticheting , on_delete=models.CASCADE , related_name='ticket')
+    tickets= models.ForeignKey(Ticketing , on_delete=models.CASCADE , related_name='ticket')
     message = models.CharField(max_length=32 , default="")
 
 
