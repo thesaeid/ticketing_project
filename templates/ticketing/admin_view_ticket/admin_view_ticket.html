@@ -14,6 +14,13 @@
 
 
 {% block content %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     <div class="container-fluid">
         <div class="row container-fluid main-page-top">
             <span class="current-location-text">
@@ -30,32 +37,32 @@
                     <form action="#" method="POST" class="form">
                         {% csrf_token %}
                         <label for="" class="db">عنوان تیکت</label>
-                        <input readonly type="text" class="form-control" value="عنوان تیکت کاربر">
+                        <input readonly type="text" class="form-control" value={{ ticket.title }}>
                         <label for="" class="db">متن تیکت</label>
                         <textarea readonly name="" id=""
-                            class="form-control">متن تیکت کاربر اینجا نوشته می شود</textarea>
+                            class="form-control">{{ ticket.description }}</textarea>
                         <label for="" class="db">پاسخگویی</label>
                         <textarea name="" id="" class="form-control"></textarea>
 
 
 
-                        <label for="" class="db">وضعیت تیکت</label>
-                        <div class="text-center container-fluid dib">
-                            <!-- BACKEND GUYS, IT'S RADIO BUTTON -->
-
-                            <input type="radio" class="btn-check pf" name="options" id="option1" autocomplete="off" checked />
-                            <label class="btn btn-primary p-1 mx-1" for="option1">بررسی شده</label>
-
-
-                            <input type="radio" class="btn-check pf" name="options" id="option2" autocomplete="off" />
-                            <label class="btn btn-warning p-1 mx-1" for="option2">در حال بررسی</label>
-
-
-                            <input type="radio" class="btn-check pf" name="options" id="option3" autocomplete="off" />
-                            <label class="btn btn-danger p-1 mx-1" for="option3">بررسی نشده</label>
-
-
-                        </div>
+{#                        <label for="" class="db">وضعیت تیکت</label>#}
+{#                        <div class="text-center container-fluid dib">#}
+{#                            <!-- BACKEND GUYS, IT'S RADIO BUTTON -->#}
+{##}
+{#                            <input type="radio" class="btn-check pf" name="options" id="option1" autocomplete="off" checked />#}
+{#                            <label class="btn btn-primary p-1 mx-1" for="option1">بررسی شده</label>#}
+{##}
+{##}
+{#                            <input type="radio" class="btn-check pf" name="options" id="option2" autocomplete="off" />#}
+{#                            <label class="btn btn-warning p-1 mx-1" for="option2">در حال بررسی</label>#}
+{##}
+{##}
+{#                            <input type="radio" class="btn-check pf" name="options" id="option3" autocomplete="off" />#}
+{#                            <label class="btn btn-danger p-1 mx-1" for="option3">بررسی نشده</label>#}
+{##}
+{##}
+{#                        </div>#}
                         <div class="text-center py-3">
                             <button type="button" class="btn btn-primary">ارسال</button>
                             <button type="submit" class="btn btn-danger">لغو</button>
@@ -66,13 +73,10 @@
             </div>
             <div class="col-lg-3">
                 <div class="card main-page-info">
-                    <p>اطلاعات شما</p>
+                    <p>اطلاعات کاربر</p>
                     <hr>
-                    <span>نام</span>
-                    <span>نام خانوادگی</span>
-                    <span>آدرس</span>
-                    <span> اطلاعات دیگر در صورت نیاز</span>
-                    <a href="#" class="btn btn-block btn-danger main-page-update-btn">بروزرسانی</a>
+                    <span>{{ ticket.user.username }}</span>
+                    <span>{ticket.user.email}</span>
 
                 </div>
             </div>
