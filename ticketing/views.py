@@ -39,3 +39,6 @@ def user_tickets(request):
 
 def admin_view_ticket(request):
     return render(request, "ticketing/admin_view_ticket/admin_view_ticket.html")
+
+def admin_view_all_tickets(request):
+    return render(request, "ticketing/admin_view_all_tickets/admin_view_all_tickets.html")
