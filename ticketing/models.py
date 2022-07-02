@@ -51,4 +51,4 @@ class ResponseTicket(models.Model):
     ticket = models.OneToOneField(
         Ticketing, on_delete=models.CASCADE, related_name="ticket"
     )
-    message = models.CharField(max_length=32, default="")
+    message = models.CharField(max_length=32, default="", null=True, blank=True)

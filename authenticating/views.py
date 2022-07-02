@@ -32,7 +32,7 @@ def login_view(request):
                     user.email == "user@ticket.com"
                     and user.password == form.cleaned_data["password"]
                 ):
-                    return redirect("submit_ticket")
+                    return redirect("/")
 
                 else:
                     form = Login()

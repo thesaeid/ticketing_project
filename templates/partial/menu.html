@@ -3,12 +3,12 @@
 
     <a href="{% url 'index' %}">صفحه اصلی</a>
     {% if user.username == "admin" %}
-      <a href="{% url 'admin_view_all_tickets' %}"> پاسخگویی </a>
-      <a href="{% url 'admin_view_all_tickets' %}">مشاهده وضعیت تیکت ها</a>
+      <a href="{% url 'admin_view_all_tickets' %}">پاسخگویی و مشاهده تیکت ها</a>
     {% else %}
+    <a href="{% url 'submit_ticket' %}">ایجاد تیکت</a>
       <a href="{% url 'user_tickets' %}">مشاهده وضعیت تیکت ها</a>
     {% endif %}
-    <a href="{% url 'logout' %}">خروج </a>
+    <a href="{% url 'logout' %}">خروج</a>
     {% else %}
     <a href="{% url 'login' %}">ورود</a>
     {% endif %}

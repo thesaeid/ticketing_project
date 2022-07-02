@@ -53,13 +53,13 @@ def submit_ticket(request):
                 title = data["title"]
                 phone_number = data["phone_number"]
                 description = data["description"]
-                ticket = Ticketing.objects.create(
+                Ticketing.objects.create(
                     user=user,
                     title=title,
                     phone_number=phone_number,
                     description=description,
                 )
-                return redirect(f"/user_tickets/{ticket.id}")
+                return redirect("/user_tickets")
             else:
                 print(form.data)
                 return HttpResponse("not ok")
@@ -90,14 +90,29 @@ def user_tickets(request):
 @login_required
 def view_ticket(request, ticket_id):
     ticket = get_object_or_404(Ticketing, id=ticket_id)
-    if ticket.user_id == request.user.id:
-        return render(
-            request,
-            "ticketing/user_view_ticket/view_ticket.html",
-            {"ticket": ticket},
-        )
+    response = (
+        ResponseTicket.objects.select_related("ticket")
+        .filter(ticket__id=ticket_id)
+        .first()
+    )
+    if response:
+        if response.ticket.user_id == request.user.id:
+            return render(
+                request,
+                "ticketing/user_view_ticket/view_ticket.html",
+                {"response": response},
+            )
+        else:
+            return HttpResponse("You are not authorized to view this ticket")
     else:
-        return HttpResponse("You are not authorized to view this ticket")
+        if ticket.user_id == request.user.id:
+            return render(
+                request,
+                "ticketing/user_view_ticket/view_ticket.html",
+                {"ticket": ticket},
+            )
+        else:
+            return HttpResponse("You are not authorized to view this ticket")
 
 
 @login_required
