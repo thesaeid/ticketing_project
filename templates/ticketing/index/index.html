@@ -15,7 +15,7 @@
         <div class="row container-fluid main-page-top">
             <div class="col-lg-4 welcome-text">
                 <span>
-                    خوش آمدید | <span class="user-name">  نام کاربر </span>
+                    خوش آمدید | <span class="user-name">  /{{ user.email }}/ </span>
                 </span>
             </div>
             <div class="col-lg-8 current-location-text">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="stat-content dib">
                             <div class="stat-text">تمام تیکت ها</div>
-                            <div class="stat-digit">تعداد تمامی تیکت ها</div>
+                            <div class="stat-digit">{{ tickets|length }}</div>
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="stat-content dib">
                             <div class="stat-text">تیکت های بررسی شده</div>
-                            <div class="stat-digit">تعداد تیکت های بررسی شده</div>
+                            <div class="stat-digit">{{ checked_tickets_count }}</div>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="stat-content dib">
                             <div class="stat-text">تیکت های در حال بررسی</div>
-                            <div class="stat-digit">تعداد تیکت های در حال بررسی</div>
+                            <div class="stat-digit">{{ inprogress_tickets_count }}</div>
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                         </div>
                         <div class="stat-content dib">
                             <div class="stat-text">تیکت های بررسی نشده</div>
-                            <div class="stat-digit">252</div>
+                            <div class="stat-digit">{{ not_checked_tickets_count }}</div>
                         </div>
                     </div>
                 </div>
@@ -90,35 +90,21 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">id</th>
                                     <th scope="col" class="table-ticket-name-header ">نام تیکت</th>
                                     <th scope="col">وضعیت</th>
                                     <th scope="col">تاریخ آخرین تغییر</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- FIRST BODY START -->
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td><a href="#">عنوان 1</a></td>
-                                    <td><span class="badge badge-success">بررسی شده</span></td>
-                                    <td>YYYY/MM/DD</td>
-                                </tr>
-                                <!-- FIRST BODY END -->
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td><a href="#">عنوان 2</a></td>
-                                    <td><span class="badge badge-warning">در حال بررسی</span></td>
-                                    <td>YYYY/MM/DD</td>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td><a href="#">عنوان 3</a></td>
-                                    <td><span class="badge badge-danger">بررسی نشده</span></td>
-                                    <td>YYYY/MM/DD</td>
-
-                                </tr>
+                                {% for ticket in tickets %}
+                                    <tr>
+                                        <th scope="row">{{ ticket.id }}</th>
+                                        <td><a href="#">{{ ticket.title }}</a></td>
+                                        <td><span class="badge badge-success">{{ ticket.status }}</span></td>
+                                        <td>{{ ticket.modified_time }}</td>
+                                    </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>
@@ -129,10 +115,9 @@
                 <div class="card main-page-info">
                     <p>اطلاعات شما</p>
                     <hr>
-                    <span>نام</span>
-                    <span>نام خانوادگی</span>
-                    <span>آدرس</span>
-                    <span> اطلاعات دیگر در صورت نیاز </span>
+                    <span>ایمیل: </span>
+                    <span> {{ email }} </span>
+                    <br>
                     <a href="#" class="btn btn-block btn-danger main-page-update-btn">بروزرسانی</a>
 
                 </div>

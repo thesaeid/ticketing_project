@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import redirect, render,get_object_or_404,redirect
+from django.shortcuts import redirect, render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from .models import Ticketing
@@ -7,10 +7,22 @@ from django.core.mail import send_mail
 from django.contrib import messages
 
 
-
 # Create your views here.
 def index(request):
-    return render(request, "ticketing/index/index.html")
+    queryset = Ticketing.objects.all()
+    checked_tickets_count = queryset.filter(status="بررسی شده").count()
+    inprogress_tickets_count = queryset.filter(status="درحال بررسی").count()
+    not_checked_tickets_count = queryset.filter(status="بررسی نشده").count()
+    return render(
+        request,
+        "ticketing/index/index.html",
+        {
+            "tickets": queryset,
+            "checked_tickets_count": checked_tickets_count,
+            "inprogress_tickets_count": inprogress_tickets_count,
+            "not_checked_tickets_count": not_checked_tickets_count,
+        },
+    )
 
 
 @login_required
@@ -41,26 +53,36 @@ def user_tickets(request):
     return render(request, "ticketing/user_tickets/user_tickets.html")
 
 
-def admin_view_ticket(request,ticket_id):
+def admin_view_ticket(request, ticket_id):
     ticket = get_object_or_404(Ticketing, id=ticket_id)
-    if request.method == 'POST':
+    if request.method == "POST":
         form = AdminViewTicketForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            message = cd['message']
-            subject = 'your ticket response !'
-            messages.add_message(
-                request, messages.ERROR, "Email sent correctly"
+            message = cd["message"]
+            subject = "your ticket response !"
+            messages.add_message(request, messages.ERROR, "Email sent correctly")
+            send_mail(
+                subject,
+                message,
+                "erfankiani10@gmail.com",
+                [ticket.user.email],
+                fail_silently=False,
             )
-            send_mail(subject, message, 'erfankiani10@gmail.com', [ticket.user.email], fail_silently=False)
     else:
         form = AdminViewTicketForm()
-    return render(request, 'ticketing/admin_view_ticket/admin_view_ticket.html', {'form': form, 'ticket': ticket})
+    return render(
+        request,
+        "ticketing/admin_view_ticket/admin_view_ticket.html",
+        {"form": form, "ticket": ticket},
+    )
 
 
-
-
-def admin_view_all_tickets(request,pk):
-    tickets=Ticketing.objects.all()
+def admin_view_all_tickets(request, pk):
+    tickets = Ticketing.objects.all()
     user = Ticketing.objects.select_related("user").filter(user__id=pk)
-    return render(request, "ticketing/admin_view_all_tickets/admin_view_all_tickets.html",{tickets:'tickets',user:'user'})
+    return render(
+        request,
+        "ticketing/admin_view_all_tickets/admin_view_all_tickets.html",
+        {tickets: "tickets", user: "user"},
+    )
