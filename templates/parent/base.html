@@ -11,10 +11,14 @@
 </head>
 <body>
 
+{% block menu %}
 {% include "partial/menu.html" %}
+{% endblock %}
 {% block content %}
 {% endblock %}
-{% include "partial/footer.html"%}
+{% block footer %}
+{% include "partial/footer.html" %}
+{% endblock %}
 
 </body>
 

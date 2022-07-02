@@ -1,6 +1,6 @@
 @font-face {
     font-family: Yekan;
-    src: url(./fonts/Yekan.woff);
+    src: url("../fonts/Yekan.ttf") format('truetype');
 }
 
 * {
@@ -25,9 +25,11 @@
 .dib {
     display: inline-block;
 }
+
 .db {
     display: block !important;
 }
+
 .color-success {
     border-color: #28a745;
 }
@@ -126,14 +128,16 @@
     font-weight: 400;
     transition: 0.2s ease-in-out;
 }
+
 .badge-hover:hover {
     background-color: white;
     color: black;
 }
+
 .badge-success {
-    /* background-color: #5873fe;  BE NAZAARAM IN RANG BARAYE BADGE-SUCCESS BEHTARE */ 
+    /* background-color: #5873fe;  BE NAZAARAM IN RANG BARAYE BADGE-SUCCESS BEHTARE */
     background-color: #0066FF;
-    
+
 }
 
 .badge-warning {
@@ -184,24 +188,29 @@
 .ticket-name {
     width: 25%;
 }
+
 .form label {
     padding: 4px 0px;
 }
+
 .form input {
     border-radius: 4px;
     margin: 5px 0px;
     width: 100%;
     padding: 7px;
 }
+
 .form textarea {
     /* height: 120px; */
     width: 100%;
     height: 100px;
     padding: 7px;
 }
+
 .text-center {
     text-align: center;
 }
+
 .pf {
     position: fixed;
 }

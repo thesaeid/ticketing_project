@@ -9,6 +9,8 @@
     <title>Namr Project</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
+
   <link rel="stylesheet" type="text/css" href="{% static 'css/admin_view_ticket.css' %}">
 {% endblock %}
 
@@ -26,7 +28,6 @@
             <span class="current-location-text">
                 <i class="ti-direction-alt icon"></i> Admin View Ticket
             </span>
-
         </div>
 
 
@@ -38,46 +39,44 @@
                         {% csrf_token %}
                         <label for="" class="db">عنوان تیکت</label>
                         <input readonly type="text" class="form-control" value={{ ticket.title }}>
-                        <label for="" class="db">متن تیکت</label>
+                        <label class="db">متن تیکت</label>
                         <textarea readonly name="" id=""
                             class="form-control">{{ ticket.description }}</textarea>
-                        <label for="" class="db">پاسخگویی</label>
-                        <textarea name="" id="" class="form-control"></textarea>
+                        <label class="db">پاسخگویی</label>
+                        <textarea name="message" class="form-control"></textarea>
 
 
 
-{#                        <label for="" class="db">وضعیت تیکت</label>#}
-{#                        <div class="text-center container-fluid dib">#}
-{#                            <!-- BACKEND GUYS, IT'S RADIO BUTTON -->#}
-{##}
-{#                            <input type="radio" class="btn-check pf" name="options" id="option1" autocomplete="off" checked />#}
-{#                            <label class="btn btn-primary p-1 mx-1" for="option1">بررسی شده</label>#}
-{##}
-{##}
-{#                            <input type="radio" class="btn-check pf" name="options" id="option2" autocomplete="off" />#}
-{#                            <label class="btn btn-warning p-1 mx-1" for="option2">در حال بررسی</label>#}
-{##}
-{##}
-{#                            <input type="radio" class="btn-check pf" name="options" id="option3" autocomplete="off" />#}
-{#                            <label class="btn btn-danger p-1 mx-1" for="option3">بررسی نشده</label>#}
-{##}
-{##}
-{#                        </div>#}
-                        <div class="text-center py-3">
-                            <button type="button" class="btn btn-primary">ارسال</button>
-                            <button type="submit" class="btn btn-danger">لغو</button>
+                    <label for="" class="db">وضعیت تیکت</label>
+                        <div class="text-center container-fluid dib">
+                           <!-- BACKEND GUYS, IT'S RADIO BUTTON -->
+                            <input type="radio" class="btn-check pf" name="status_check" id="option1" autocomplete="off" unchecked/>
+                            <label class="btn btn-primary p-1 mx-1" for="option1">بررسی شده</label>
+
+
+                            <input type="radio" class="btn-check pf" name="status_inp" id="option2" autocomplete="off" unchecked/>
+                            <label class="btn btn-warning p-1 mx-1" for="option2">در حال بررسی</label>
+
+
+                            <input type="radio" class="btn-check pf" name="status_not_checked" id="option3" autocomplete="off" unchecked/>
+                            <label class="btn btn-danger p-1 mx-1" for="option3">بررسی نشده</label>
+                        </div>
+                           <div class="text-center py-3">
+                               <button type="submit" class="btn btn-primary" href="#">ارسال</button>
+                               <button type="button" class="btn btn-danger" onclick="location.href='{{ BASE_URL }}/admin_view_ticket/{{ticket.id}}'">لغو</button>
+                           </div>
                         </div>
                     </form>
                 </div>
 
-            </div>
-            <div class="col-lg-3">
-                <div class="card main-page-info">
-                    <p>اطلاعات کاربر</p>
-                    <hr>
-                    <span>{{ ticket.user.username }}</span>
-                    <span>{ticket.user.email}</span>
-
+                <div class="col-lg-3">
+                    <div class="card main-page-info">
+                        <p>اطلاعات کاربر</p>
+                        <hr>
+                        <span>ایمیل: </span>
+                        <span>{{ ticket.user.email }}</span>
+    
+                    </div>
                 </div>
             </div>
 

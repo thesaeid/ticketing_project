@@ -1,18 +1,20 @@
 <div class="topnav">
-  <a href="#">صفحه اصلی</a>
-  <a href="#"> پاسخگویی </a>
-  <a href="#">مشاهده وضعیت تیکت ها</a>
-  <a href="#">ارتباط با ما</a>
-  <a href="#">خروج </a>
-  <a href="#">ورود</a>
-<div class="search-container">
-    <form action="">
-      {% csrf_token %}
-      <input type="text" placeholder="جستجو..." name="search">
-      <button type="submit">
-        <i class="fa fa-search"></i>
-      </button>
-    </form>
+  {% if user.is_authenticated %}
+    <a href="{% url 'index' %}">صفحه اصلی</a>
+    <a href="{% url 'admin_view_all_tickets' %}"> پاسخگویی </a>
+    <a href="{% url 'admin_view_all_tickets' %}">مشاهده وضعیت تیکت ها</a>
+    <a href="#">ارتباط با ما</a>
+    <a href="{% url 'logout' %}">خروج </a>
+    {% else %}
+    <a href="{% url 'login' %}">ورود</a>
+    {% endif %}
+    {% comment %} <div class="search-container">
+      <form action="">
+        {% csrf_token %}
+        <input type="text" placeholder="جستجو..." name="search">
+        <button type="submit">
+          <i class="fa fa-search"></i>
+        </button>
+      </form>
+    </div> {% endcomment %}
   </div>
-</div>
-

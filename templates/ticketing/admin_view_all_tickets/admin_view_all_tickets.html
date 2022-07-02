@@ -35,7 +35,7 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col" class="ticket-name">عنوان تیکت</th>
-                                    <th scope="col" class="ticket-text">نام کاربری کاربر</th>
+                                    <th scope="col" class="ticket-text">ایمیل کاربر</th>
                                     <th scope="col">وضعیت</th>
                                     <th scope="col">تاریخ ثبت</th>
                                 </tr>
@@ -46,16 +46,15 @@
                                 {% for ticket in tickets %}
                                 <tr>
                                     <th scope="row">{{ ticket.id }}</th>
-
                                     <!-- By click on title, ticket details page apear for admin  -->
-                                    <td><a href="#">{{ ticket.title }}</a></td>
-                                    <td>{{ ticket.username }}</td>
-                                    {% if ticket.ATTRIBUTE_TYPE_FIELDS == 1 %}
-                                        <td><span class="badge badge-success">بررسی شده</span></td>
-                                    {% elif ticket.ATTRIBUTE_TYPE_FIELDS == 2 %}
-                                        <td><span class="badge badge-warning">در حال بررسی</span></td>
-                                    {% elif ticket.ATTRIBUTE_TYPE_FIELDS == 3 %}
-                                        <td><span class="badge badge-danger">بررسی نشده</span></td>
+                                    <td><a href="{% url 'admin_view_ticket' ticket.id %}">{{ ticket.title }}</a></td>
+                                    <td>{{ ticket.user.email }}</td>
+                                    {% if ticket.status == 'بررسی شده' %}
+                                        <td><span class="badge badge-success">{{ ticket.status }}</span></td>
+                                    {% elif ticket.status == 'درحال بررسی' %}
+                                        <td><span class="badge badge-warning">{{ ticket.status }}</span></td>
+                                    {% else %}
+                                        <td><span class="badge badge-danger">{{ ticket.status }}</span></td>
                                     {% endif %}
                                     <td>{{ ticket.created_time }}</td>
                                 </tr>
@@ -74,7 +73,7 @@
                 <div class="card main-page-info">
                     <p>اطلاعات شما</p>
                     <hr>
-                    <span>{{ user.username }}</span>
+                    <span>ایمیل: </span>
                     <span>{{ user.email }}</span>
                 </div>
             </div>

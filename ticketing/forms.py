@@ -8,7 +8,5 @@ class UserSubmitTicketForm(forms.ModelForm):
         fields = ("title", "phone_number", "description", "user")
 
 
-class AdminViewTicketForm(forms.ModelForm):
-    class Meta:
-        model = ResponseTicket
-        fields = ("message",)
+class AdminViewTicketForm(forms.Form):
+    message = forms.CharField(max_length=32, required=True)
