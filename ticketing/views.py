@@ -37,8 +37,10 @@ def submit_ticket(request):
     )
 
 
-def user_tickets(request):
-    return render(request, "ticketing/user_tickets/user_tickets.html")
+def user_tickets(request,pk):
+    tickets = Ticketing.objects.filter(user_id=pk)
+    user = Ticketing.objects.select_related("user").filter(user__id=pk)
+    return render(request, "ticketing/user_tickets/user_tickets.html",{tickets:'tickets',user:'user'})
 
 
 def admin_view_ticket(request,ticket_id):
