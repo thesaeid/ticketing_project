@@ -101,7 +101,11 @@
                                 {% for ticket in tickets %}
                                     <tr>
                                         <th scope="row">{{ ticket.id }}</th>
-                                        <td><h5><a href="{% url 'admin_view_ticket' ticket.id %}">{{ ticket.title }}</a></h5></td>
+                                        {% if user.username == "user" %}
+                                            <td><h5><a href="{% url 'view_ticket' ticket.id %}">{{ ticket.title }}</a></h5></td>
+                                        {% else %}
+                                            <td><h5><a href="{% url 'admin_view_ticket' ticket.id %}">{{ ticket.title }}</a></h5></td>
+                                        {% endif %}
                                         {% if ticket.status == 'بررسی شده' %}
                                             <td><span class="badge badge-success">{{ ticket.status }}</span></td>
                                         {% elif ticket.status == 'درحال بررسی' %}
@@ -125,8 +129,6 @@
                     <span>ایمیل: </span>
                     <span> {{ user.email }} </span>
                     <br>
-                    <a href="#" class="btn btn-block btn-danger main-page-update-btn">بروزرسانی</a>
-
                 </div>
             </div>
 

@@ -6,12 +6,14 @@ from .views import (
     admin_view_ticket,
     admin_view_all_tickets,
     logout,
+    view_ticket,
 )
 
 urlpatterns = [
     path("", index, name="index"),
+    path("view_ticket/<int:ticket_id>", view_ticket, name="view_ticket"),
     path("submit_ticket/", submit_ticket, name="submit_ticket"),
-    path("user_tickets/<int:pk>/", user_tickets, name="user_tickets"),
+    path("user_tickets/", user_tickets, name="user_tickets"),
     path(
         "admin_view_all_tickets/",
         admin_view_all_tickets,

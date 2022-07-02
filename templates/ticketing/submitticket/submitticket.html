@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
 
 
 {% endblock %}
@@ -33,7 +34,7 @@
                           <label for="title-ticket" class="db">عنوان تیکت</label>
                           <input type="text" name="title" class="form-control">
                           <label for="phone" class="db"> تلفن همراه</label>
-                          <input type="tel" name="phonnum" class="form-control">
+                          <input type="tel" name="phone_number" class="form-control">
                           <label for="text-ticket" class="db">متن تیکت</label>
                           <textarea name="description" class="form-control"></textarea>
                           <div class="text-center py-3">
@@ -48,8 +49,8 @@
                 <div class="card main-page-info">
                     <p>اطلاعات کاربر</p>
                     <hr>
-                    <p>ایمیل:</p>
-                    <p>{{email}}</p>
+                    <p>ایمیل: </p>
+                    <p>{{ user.email}}</p>
                     <a href="#" class="btn btn-block btn-danger main-page-update-btn">بروزرسانی</a>
 
                 </div>

@@ -15,16 +15,28 @@ def index(request):
         checked_tickets_count = queryset.filter(status="بررسی شده").count()
         inprogress_tickets_count = queryset.filter(status="درحال بررسی").count()
         not_checked_tickets_count = queryset.filter(status="بررسی نشده").count()
-        return render(
-            request,
-            "ticketing/index/index.html",
-            {
-                "tickets": queryset,
-                "checked_tickets_count": checked_tickets_count,
-                "inprogress_tickets_count": inprogress_tickets_count,
-                "not_checked_tickets_count": not_checked_tickets_count,
-            },
-        )
+        if request.user.email == "admin@ticket.com":
+            return render(
+                request,
+                "ticketing/index/index.html",
+                {
+                    "tickets": queryset,
+                    "checked_tickets_count": checked_tickets_count,
+                    "inprogress_tickets_count": inprogress_tickets_count,
+                    "not_checked_tickets_count": not_checked_tickets_count,
+                },
+            )
+        else:
+            return render(
+                request,
+                "ticketing/index/index.html",
+                {
+                    "tickets": queryset,
+                    "checked_tickets_count": checked_tickets_count,
+                    "inprogress_tickets_count": inprogress_tickets_count,
+                    "not_checked_tickets_count": not_checked_tickets_count,
+                },
+            )
     else:
         return redirect("/login")
 
@@ -33,18 +45,29 @@ def index(request):
 def submit_ticket(request):
     if request.user.is_authenticated:
         email = request.user.email
-        print(email)
-        user = Ticketing.objects.select_related("user").filter(user__email=email)
+        user = request.user
         if request.method == "POST":
             form = UserSubmitTicketForm(request.POST)
             if form.is_valid():
-                form.save()
-                return redirect("/ticketing/user_tickets/")
+                data = form.cleaned_data
+                title = data["title"]
+                phone_number = data["phone_number"]
+                description = data["description"]
+                ticket = Ticketing.objects.create(
+                    user=user,
+                    title=title,
+                    phone_number=phone_number,
+                    description=description,
+                )
+                return redirect(f"/user_tickets/{ticket.id}")
             else:
                 print(form.data)
                 return HttpResponse("not ok")
         else:
             form = UserSubmitTicketForm()
+            return render(
+                request, "ticketing/submitticket/submitticket.html", {"form": form}
+            )
 
     return render(
         request,
@@ -54,14 +77,27 @@ def submit_ticket(request):
 
 
 @login_required
-def user_tickets(request, pk):
-    tickets = Ticketing.objects.filter(user_id=pk)
-    user = Ticketing.objects.select_related("user").filter(user__id=pk)
+def user_tickets(request):
+    tickets = Ticketing.objects.filter(user_id=request.user.id)
+    user = request.user
     return render(
         request,
         "ticketing/user_tickets/user_tickets.html",
-        {tickets: "tickets", user: "user"},
+        {"tickets": tickets, "user": user},
     )
+
+
+@login_required
+def view_ticket(request, ticket_id):
+    ticket = get_object_or_404(Ticketing, id=ticket_id)
+    if ticket.user_id == request.user.id:
+        return render(
+            request,
+            "ticketing/user_view_ticket/view_ticket.html",
+            {"ticket": ticket},
+        )
+    else:
+        return HttpResponse("You are not authorized to view this ticket")
 
 
 @login_required

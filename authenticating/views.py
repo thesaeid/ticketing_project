@@ -9,7 +9,7 @@ from .forms import Login
 def login_view(request):
     if request.user.is_authenticated:
         return redirect("/")
-    
+
     if request.method == "GET":
         form = Login()
         return render(request, "authenticating/form/login.html", {"form": form})
@@ -32,7 +32,7 @@ def login_view(request):
                     user.email == "user@ticket.com"
                     and user.password == form.cleaned_data["password"]
                 ):
-                    return redirect("submit_ticket/")
+                    return redirect("submit_ticket")
 
                 else:
                     form = Login()

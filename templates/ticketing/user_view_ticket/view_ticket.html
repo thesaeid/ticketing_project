@@ -1,0 +1,70 @@
+{% extends "parent/base.html" %}
+{% load static %}
+{% block title %} صفحه مدیریت تیکت ها {% endblock %}
+
+{% block head %}
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/admin_view_ticket.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="container-fluid">
+        <div class="row container-fluid main-page-top">
+            <span class="current-location-text">
+                <i class="ti-direction-alt icon"></i> User View Ticket
+            </span>
+        </div>
+
+
+        <!-- second part -->
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="card">
+                    <label for="" class="db">عنوان تیکت</label>
+                    <input readonly type="text" class="form-control" value={{ ticket.title }}>
+                    <label class="db">متن تیکت</label>
+                    <textarea readonly name="" id=""
+                        class="form-control">{{ ticket.description }}</textarea>
+
+                    <label class="db">وضعیت تیکت</label>
+                    {% if ticket.status == 'بررسی شده' %}
+                        <td><span class="badge badge-success">{{ ticket.status }}</span></td>
+                    {% elif ticket.status == 'درحال بررسی' %}
+                        <td><span class="badge badge-warning">{{ ticket.status }}</span></td>
+                    {% else %}
+                        <td><span class="badge badge-danger">{{ ticket.status }}</span></td>
+                    {% endif %}
+                    <div class="text-center py-3">
+                        <a href="{% url 'user_tickets' %}"><button type="submit" class="btn btn-primary">تایید</button></a>
+                    </div>
+                </div>
+            </div>
+                <div class="col-lg-3">
+                    <div class="card main-page-info">
+                        <p>اطلاعات کاربر</p>
+                        <hr>
+                        <span>ایمیل: </span>
+                        <span>{{ ticket.user.email }}</span>
+    
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+

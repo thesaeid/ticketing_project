@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 {% endblock %}
 {% block content %}
@@ -39,23 +40,21 @@
                             </thead>
                             <tbody>
                                 <!-- FIRST BODY START -->
-                               {% for ticket in tickets %}
+                                {% for ticket in tickets %}
                                 <tr>
                                     <th scope="row">{{ ticket.id }}</th>
-
-                                    <!-- By click on title, ticket details page apear for admin  -->
-                                    <td><a href="#">{{ ticket.title }}</a></td>
-                                    <td>{{ ticket.description}}</td>
-                                    {% if ticket.ATTRIBUTE_TYPE_FIELDS == 1 %}
-                                        <td><span class="badge badge-success">بررسی شده</span></td>
-                                    {% elif ticket.ATTRIBUTE_TYPE_FIELDS == 2 %}
-                                        <td><span class="badge badge-warning">در حال بررسی</span></td>
-                                    {% elif ticket.ATTRIBUTE_TYPE_FIELDS == 3 %}
-                                        <td><span class="badge badge-danger">بررسی نشده</span></td>
+                                    <td><h5><a href="{% url 'view_ticket' ticket.id %}">{{ ticket.title }}</a></h5></td>
+                                    <td>{{ ticket.description }}</td>
+                                    {% if ticket.status == 'بررسی شده' %}
+                                        <td><span class="badge badge-success">{{ ticket.status }}</span></td>
+                                    {% elif ticket.status == 'درحال بررسی' %}
+                                        <td><span class="badge badge-warning">{{ ticket.status }}</span></td>
+                                    {% else %}
+                                        <td><span class="badge badge-danger">{{ ticket.status }}</span></td>
                                     {% endif %}
-                                    <td>{{ ticket.created_time }}</td>
+                                    <td>{{ ticket.modified_time }}</td>
                                 </tr>
-                                {% endfor %}
+                            {% endfor %}
 
                             </tbody>
                         </table>
@@ -67,10 +66,8 @@
                 <div class="card main-page-info">
                     <p>اطلاعات شما</p>
                     <hr>
-                    <span>{{ user.username }}</span>
+                    <span>ایمیل: </span>
                     <span>{{ user.email}}</span>
-                    <span>{{ user.phonnum }}</span>
-
                 </div>
             </div>
 
