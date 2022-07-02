@@ -1,12 +1,11 @@
 from django import forms
-from .models import Ticketing,ResponseTicket
+from .models import Ticketing, ResponseTicket
 
 
 class UserSubmitTicketForm(forms.ModelForm):
     class Meta:
         model = Ticketing
-        fields = ("title", "phonnum", "description")
-
+        fields = ("title", "phone_number", "description", "user")
 
 
 class AdminViewTicketForm(forms.ModelForm):

@@ -1,7 +1,9 @@
 from django.contrib import admin
-from ticketing.models import Ticketing , Category
+from ticketing.models import Ticketing, Category
+
+
 class TicketingAdmin(admin.ModelAdmin):
-    list_display = ['user' , 'title' , 'type' , 'description']
+    list_display = ["user", "title", "status", "description"]
 
 
-admin.site.register(Ticketing , TicketingAdmin)
+admin.site.register(Ticketing, TicketingAdmin)

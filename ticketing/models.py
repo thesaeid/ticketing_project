@@ -1,6 +1,6 @@
-from authenticating.models import CustomUserManager
 from django.db import models
 from django.conf import settings
+from django.core.validators import RegexValidator
 
 
 class Category(models.Model):
@@ -15,10 +15,10 @@ class Ticketing(models.Model):
     darhal_baresi = 2
     baresi_nashode = 3
 
-    ATTRIBUTE_TYPE_FIELDS = (
-        (baresi, "baresi"),
-        (darhal_baresi, "darhal_baresi"),
-        (baresi_nashode, "baresi_nashode"),
+    STATUS_CHOICES = (
+        (baresi, "بررسی شده"),
+        (darhal_baresi, "درحال بررسی"),
+        (baresi_nashode, "بررسی نشده"),
     )
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="users"
@@ -26,10 +26,14 @@ class Ticketing(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
     modified_time = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=32)
-    type = models.PositiveSmallIntegerField(
-        default=baresi_nashode, choices=ATTRIBUTE_TYPE_FIELDS
+    status = models.CharField(
+        max_length=32, default="بررسی نشده", choices=STATUS_CHOICES
     )
-    phonnum = models.TextField()
+    phone_regex = RegexValidator(
+        regex=r"^\+?1?\d{9,15}$",
+        message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.",
+    )
+    phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True)
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
