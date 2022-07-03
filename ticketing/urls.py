@@ -7,10 +7,12 @@ from .views import (
     admin_view_all_tickets,
     logout,
     view_ticket,
+    home,
 )
 
 urlpatterns = [
-    path("", index, name="index"),
+    path("index/", index, name="index"),
+    path("", home, name="home"),
     path("view_ticket/<int:ticket_id>", view_ticket, name="view_ticket"),
     path("submit_ticket/", submit_ticket, name="submit_ticket"),
     path("user_tickets/", user_tickets, name="user_tickets"),

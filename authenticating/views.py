@@ -8,7 +8,7 @@ from .forms import Login
 # Create your views here.
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect("/")
+        return redirect("/index")
 
     if request.method == "GET":
         form = Login()
@@ -23,17 +23,10 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 if (
-                    user.email == "admin@ticket.com"
+                    user.email == "admin@ticket.com" or user.email == "user@ticket.com"
                     and user.password == form.cleaned_data["password"]
                 ):
-                    return redirect("/")
-
-                elif (
-                    user.email == "user@ticket.com"
-                    and user.password == form.cleaned_data["password"]
-                ):
-                    return redirect("/")
-
+                    return redirect("/index")
                 else:
                     form = Login()
                     messages.add_message(

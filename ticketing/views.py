@@ -9,6 +9,12 @@ from django.contrib import messages
 
 
 # Create your views here.
+
+
+def home(request):
+    return render(request, "ticketing/home/home.html")
+
+
 def index(request):
     if request.user.is_authenticated:
         queryset = Ticketing.objects.all()
@@ -163,4 +169,4 @@ def admin_view_all_tickets(request):
 @login_required
 def logout(request):
     django_logout(request)
-    return redirect("login")
+    return redirect("/")
