@@ -17,7 +17,7 @@ def home(request):
 
 def index(request):
     if request.user.is_authenticated:
-        queryset = Ticketing.objects.all()
+        queryset = Ticketing.objects.all().order_by("-id")
         checked_tickets_count = queryset.filter(status="بررسی شده").count()
         inprogress_tickets_count = queryset.filter(status="درحال بررسی").count()
         not_checked_tickets_count = queryset.filter(status="بررسی نشده").count()
@@ -84,7 +84,7 @@ def submit_ticket(request):
 
 @login_required
 def user_tickets(request):
-    tickets = Ticketing.objects.filter(user_id=request.user.id)
+    tickets = Ticketing.objects.filter(user_id=request.user.id).order_by("-id")
     user = request.user
     return render(
         request,
@@ -158,7 +158,7 @@ def admin_view_ticket(request, ticket_id):
 
 @login_required
 def admin_view_all_tickets(request):
-    tickets = Ticketing.objects.all()
+    tickets = Ticketing.objects.all().order_by("-id")
     return render(
         request,
         "ticketing/admin_view_all_tickets/admin_view_all_tickets.html",
