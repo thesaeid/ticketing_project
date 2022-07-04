@@ -1,6 +1,8 @@
+@import "bootstrap.css";
+@import "submit.css";
+@import "themify-icons.css";
+@import "theme.css";
 
-
- @import "bootstrap.css";
-    @import "submit.css";
-    @import "themify-icons.css";
-    @import "theme.css";
+#submit_button {
+   margin-left: 2px;
+}

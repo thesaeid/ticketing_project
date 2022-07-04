@@ -37,9 +37,9 @@
                     <textarea readonly name="" id=""
                             class="form-control">{{ response.message }}</textarea>
                     <label class="db">وضعیت تیکت</label>
-                    {% if ticket.status == 'بررسی شده' %}
+                    {% if response.ticket.status == 'بررسی شده' %}
                         <td><span class="badge badge-success">{{  response.ticket.status }}</span></td>
-                    {% elif ticket.status == 'درحال بررسی' %}
+                    {% elif response.ticket.status == 'درحال بررسی' %}
                         <td><span class="badge badge-warning">{{  response.ticket.status }}</span></td>
                     {% else %}
                         <td><span class="badge badge-danger">{{  response.ticket.status }}</span></td>

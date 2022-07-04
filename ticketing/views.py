@@ -146,7 +146,7 @@ def admin_view_ticket(request, ticket_id):
             else:
                 ResponseTicket.objects.create(ticket=ticket, message=message)
 
-            return redirect("/")
+            return redirect("/index")
     else:
         form = AdminViewTicketForm()
     return render(
