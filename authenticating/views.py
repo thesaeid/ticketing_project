@@ -19,11 +19,12 @@ def login_view(request):
         if form.is_valid():
             email = form.cleaned_data["email"]
             password = form.cleaned_data["password"]
-            user = get_object_or_404(CustomUser, email=email, password=password)
+            user = CustomUser.objects.filter(email=email, password=password).first()
             if user is not None:
                 login(request, user)
                 if (
-                    user.email == "admin@ticket.com" or user.email == "user@ticket.com"
+                    user.email == "admin@ticket.com"
+                    or user.email == "user@ticket.com"
                     and user.password == form.cleaned_data["password"]
                 ):
                     return redirect("/index")
@@ -38,3 +39,14 @@ def login_view(request):
                         "authenticating/form/login.html",
                         {"form": form},
                     )
+            else:
+                form = Login()
+                messages.add_message(
+                    request, messages.INFO, "Invalid email or password"
+                )
+
+                return render(
+                    request,
+                    "authenticating/form/login.html",
+                    {"form": form},
+                )
